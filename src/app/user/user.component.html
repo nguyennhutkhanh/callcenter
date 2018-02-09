@@ -1,0 +1,109 @@
+<div class="animated fadeIn">
+        <div class="card">
+          <div class="card-block">
+            <div class="row margin-bottom-10">
+                <div class="col-sm-7 text-left">
+                    <div class="form-inline row">
+                        <label class="col-sm-1 control-label text-bold" style="justify-content: left;" for="inputName">Name </label>
+                        <input kendoTextBox type="text" name="search" class="col-sm-4" [(ngModel)]="inputName"/>
+                        <div class="col-sm-2">
+                            <button kendoButton [iconClass]="'fa fa-search fa-fw'" [primary]="true" type="button" (click)="onSearchUser()">&nbsp;Search&nbsp;</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <a [routerLink]="[]" (click)="onShowSearchAdvanced()">Advanced Search</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 text-right">
+                    <button kendoButton [iconClass]="'fa fa-plus fa-fw'" type="button" (click)="onCreateUser()">&nbsp;Create&nbsp;</button>
+                </div>
+            </div>
+  
+            <table class="table table-bordered table-striped table-condensed" style="margin-top: 10px;">
+              <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Username</th>
+                  <th>Title</th>
+                  <th>Department</th>
+                  <th>Phone</th>
+                  <th>Status</th>
+                  <th style="width:180px;">System Administrator</th>
+                  <th style="width:150px;">&nbsp;</th>
+              </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of userList" (dblclick)="onEditUser(item.id)" >
+                      <td>{{item.firstName + ' ' + item.lastName}}</td>
+                      <td>{{item.userName}}</td>
+                      <td>{{item.title}}</td>
+                      <td>{{item.department}}</td>
+                      <td>{{item.phoneMobile}}</td>
+                      <td>{{item.status}}</td>
+                      <td><label class="k-form-field" *ngIf="item.isAdmin">
+                        <input type="checkbox" class="k-checkbox"  checked="">
+                        <label class="k-checkbox-label" for="auth-2fa"></label>
+                        </label>
+                        </td>
+                      <td><a [routerLink]="[]" (click)="onEditUser(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteUser(item.id)">Delete</a> | <a [routerLink]="[]" (click)="onDetailUser(item.id)">Detail</a></td>
+                  </tr>
+              </tbody>
+          </table>
+          <div class="row margin-bottom-10">
+                <div class="col-sm-4 text-left">
+                    <label style="margin-top:10px" style="justify-content: left;">Showing {{(currentIndex-1 )* pageSize + 1 }} to {{(currentIndex-1 ) * pageSize + record}} of {{totalrecord}} entries</label>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <ul class="pagination" style="float:right" >
+                        <li [ngClass]="{'disabled': (currentIndex == 1 || pageNumber == 0)}" ><a  (click)="prevPage()">Prev</a></li>
+                            <li *ngFor="let page of pagesIndex"  [ngClass]="{'active': (currentIndex == page)}">
+                                <a (click)="setPage(page)">{{page}}</a>
+                            </li>
+                        <li [ngClass]="{'disabled': (currentIndex == pageNumber || pageNumber == 0)}" ><a   (click)="nextPage()">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Dialog search advanced-->
+            <kendo-dialog *ngIf="openedSearchAdvanced" (close)="closeSearchAdvancedDialog()" [minWidth]="250" [width]="450">
+                <kendo-dialog-titlebar>
+                    <div style="font-size: 18px; line-height: 1.3em;">
+                      <span class="k-icon k-i-search"></span> Search Advanced
+                    </div>
+                  </kendo-dialog-titlebar>
+              
+              <kendo-dialog-actions>
+                  <button kendoButton (click)="closeSearchAdvancedDialog()" primary="true">Search</button>
+                  <button kendoButton (click)="closeSearchAdvancedDialog()">Cancel</button>
+              </kendo-dialog-actions>
+          </kendo-dialog>
+
+            <!-- Dialog confirm delete-->
+            <kendo-dialog *ngIf="openedDelete" (close)="onCloseDialogDeleteUser()" [minWidth]="250" [width]="450">
+                <kendo-dialog-titlebar style="background-color: orange;">
+                    <div style="font-size: 18px; line-height: 1.3em;">
+                    <span class="k-icon k-i-warning"></span> Confirm delete
+                    </div>
+                </kendo-dialog-titlebar>
+                <p style="margin: 30px; text-align: center;">Are you sure you want to continue?</p>
+                <kendo-dialog-actions>
+                    <button kendoButton (click)="onDeleteUser()" primary="true">Delete</button>
+                    <button kendoButton (click)="onCloseDialogDeleteUser()">Cancel</button>
+                </kendo-dialog-actions>
+            </kendo-dialog>
+
+            <!-- Dialog Error-->
+            <kendo-dialog *ngIf="errorDialog" (close)="onCloseErrorDialog()" [minWidth]="250" [width]="450">
+                <kendo-dialog-titlebar style="background-color: red;">
+                    <div style="font-size: 18px; line-height: 1.3em;">
+                    <span class="k-icon k-i-warning"></span> Error
+                    </div>
+                </kendo-dialog-titlebar>
+                <p style="margin: 30px; text-align: center;">{{contentError}}</p>
+                <kendo-dialog-actions>
+                    <button kendoButton (click)="onCloseErrorDialog()">Cancel</button>
+                </kendo-dialog-actions>
+            </kendo-dialog>
+        </div>
+    </div>
+</div>

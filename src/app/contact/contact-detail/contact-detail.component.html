@@ -1,0 +1,139 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header" *ngIf="contact">
+          <i class="fa fa-align-justify"></i> {{contact.salutation + '. ' + contact.firstName + ' ' + contact.lastName}}
+        </div>
+        <div class="card-block" *ngIf="contact">
+            <fieldset>                        
+                <legend>Over view</legend>
+                  <div class="form-inline">
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Name:</label>
+                          <span class="col-sm-8 dotted">{{contact.salutation + '. ' + contact.firstName + ' ' + contact.lastName}}&nbsp;</span>
+                      </div>
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Office phone:</label>
+                          <span class="col-sm-8 dotted">{{contact.phoneWork}}&nbsp;</span>
+                      </div>
+                  </div>
+
+                  <div class="form-inline">
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Title:</label>
+                          <span class="col-sm-8 dotted">{{contact.title}}&nbsp;</span>
+                      </div>
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Mobile:</label>
+                          <span class="col-sm-8 dotted">{{contact.phoneMobile}}&nbsp;</span>
+                      </div>
+                  </div>
+
+                  <div class="form-inline">
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Department:</label>
+                          <span class="col-sm-8 dotted">{{contact.department}}&nbsp;</span>
+                      </div>
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Fax:</label>
+                          <span class="col-sm-8 dotted">{{contact.phoneFax}}&nbsp;</span>
+                      </div>
+                  </div>
+
+                  <div class="form-inline">
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Account name:</label>
+                          <span class="col-sm-8 dotted">{{contact.phoneMobile}}&nbsp;</span>
+                      </div>
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          
+                      </div>
+                  </div>
+
+                  <div class="form-inline">
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Primary address:</label>
+                          <span class="col-sm-8 dotted">{{contact.primaryAddressStreet}}</span>
+                          
+                          <label class="col-sm-4 text-left text-bold">&nbsp;</label>
+                          <span class="col-sm-8 dotted">{{contact.primaryAddressState}}&nbsp;</span>
+
+                          <label class="col-sm-4 text-left text-bold">&nbsp;</label>
+                          <span class="col-sm-8 dotted">{{contact.primaryAddressCity}}&nbsp;</span>
+
+                          <label class="col-sm-4 text-left text-bold">&nbsp;</label>
+                          <span class="col-sm-8 dotted">{{contact.primaryAddressCountry}}&nbsp;</span>
+                      </div>
+                      <div class="col-sm-6 form-inline margin-top-10">
+                            <label class="col-sm-4 text-left text-bold">Other address:</label>
+                            <span class="col-sm-8 dotted">{{contact.altAddressStreet}}&nbsp;</span>
+                            
+                            <label class="col-sm-4 text-left text-bold">&nbsp;</label>
+                            <span class="col-sm-8 dotted">{{contact.altAddressState}}&nbsp;</span>
+  
+                            <label class="col-sm-4 text-left text-bold">&nbsp;</label>
+                            <span class="col-sm-8 dotted">{{contact.altAddressCity}}&nbsp;</span>
+  
+                            <label class="col-sm-4 text-left text-bold">&nbsp;</label>
+                            <span class="col-sm-8 dotted">{{contact.altAddressCountry}}&nbsp;</span>
+                      </div>
+                  </div>
+
+                  <div class="form-inline">
+                      <div class="col-sm-12 form-inline margin-top-10">
+                          <label class="col-sm-2 text-left text-bold">Descripton:</label>
+                          <span class="col-sm-10 dotted">{{contact.description}}&nbsp;</span>
+                      </div>
+                  </div>
+            </fieldset>
+            <hr/>
+
+            <fieldset>                        
+                <legend>Other</legend>
+                  <div class="form-inline">
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Assign to:</label>
+                          <span class="col-sm-8 dotted">{{contact.createdBy}}&nbsp;</span>
+                      </div>
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          
+                      </div>
+                  </div>
+
+                  <div class="form-inline">
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Date created:</label>
+                          <span class="col-sm-8 dotted">{{ConvertIntToDateTime(contact.dateEntered)}}&nbsp;</span>
+                      </div>
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          
+                      </div>
+                  </div>
+
+                  <div class="form-inline">
+                      <div class="col-sm-6 form-inline margin-top-10">
+                          <label class="col-sm-4 text-left text-bold">Date modified:</label>
+                          <span class="col-sm-8 dotted">{{ConvertIntToDateTime(contact.dateModified)}}&nbsp;</span>
+                      </div>
+                      <div class="col-sm-6 form-inline margin-top-10">
+                      </div>
+                  </div>
+            </fieldset>
+            <hr/>
+
+            <div class="row">
+                <div class="col-sm-7 text-left">
+                    <div class="form-inline">
+                        <button class="k-button k-primary" type="button" (click)="onEdit(contact.id)"><i class="fa fa-pencil"></i>&nbsp; Edit</button> &nbsp;
+                        <button class="btn btn-danger" type="button" class="k-button" (click)="onBack()"><i class="fa fa-trash"></i>&nbsp; Cancel</button>
+                    </div>
+                </div>
+                <div class="col-sm-5 text-right">
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>

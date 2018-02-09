@@ -1,0 +1,25 @@
+.margin-top-5{
+    margin-top: 5px;
+}
+
+.margin-top-10{
+    margin-top: 10px;
+}
+
+.text-bold{
+    font-weight: bold;
+    justify-content: flex-end;
+}
+.text-left{
+    justify-content: left;
+}
+
+.table tr td{
+    padding: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+}
+
+input, textarea{
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}

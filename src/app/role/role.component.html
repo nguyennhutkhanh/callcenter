@@ -1,0 +1,58 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-block">
+        <div class="row margin-bottom-10">
+            <div class="col-sm-7 text-left">
+                
+            </div>
+            <div class="col-sm-5 text-right">
+                <button kendoButton [iconClass]="'fa fa-plus fa-fw'" type="button" (click)="onCreateRole()">&nbsp;Create&nbsp;</button>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped table-condensed" style="margin-top: 10px;">
+          <thead>
+          <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th style="width:150px;">&nbsp;</th>
+          </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of roles">
+                  <td>{{item.name}}</td>
+                  <td>{{item.description}}</td>
+                  <td><a [routerLink]="[]" (click)="onEditRole(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteRole(item.id)">Delete</a>| <a [routerLink]="[]" (click)="onDetailRole(item.id)">Detail</a></td>
+              </tr>
+          </tbody>
+      </table>
+
+      <!-- Dialog confirm delete-->
+      <kendo-dialog *ngIf="openedDelete" (close)="onCloseDialogDeleteRole()" [minWidth]="250" [width]="450">
+            <kendo-dialog-titlebar style="background-color: orange;">
+                <div style="font-size: 18px; line-height: 1.3em;">
+                <span class="k-icon k-i-warning"></span> Confirm delete
+                </div>
+            </kendo-dialog-titlebar>
+            <p style="margin: 30px; text-align: center;">Are you sure you want to continue?</p>
+            <kendo-dialog-actions>
+                <button kendoButton (click)="onDeleteRole()" primary="true">Delete</button>
+                <button kendoButton (click)="onCloseDialogDeleteRole()">Cancel</button>
+            </kendo-dialog-actions>
+        </kendo-dialog>
+
+        <!-- Dialog Error-->
+        <kendo-dialog *ngIf="errorDialog" (close)="onCloseErrorDialog()" [minWidth]="250" [width]="450">
+            <kendo-dialog-titlebar style="background-color: red;">
+                <div style="font-size: 18px; line-height: 1.3em;">
+                <span class="k-icon k-i-warning"></span> Error
+                </div>
+            </kendo-dialog-titlebar>
+            <p style="margin: 30px; text-align: center;">{{contentError}}</p>
+            <kendo-dialog-actions>
+                <button kendoButton (click)="onCloseErrorDialog()">Cancel</button>
+            </kendo-dialog-actions>
+        </kendo-dialog>
+      </div>
+    </div>
+ </div>

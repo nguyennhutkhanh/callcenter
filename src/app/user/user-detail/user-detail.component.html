@@ -1,0 +1,129 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header" *ngIf="user">
+        <i class="fa fa-align-justify"></i> {{user.firstName + ' ' + user.lastName}}
+        </div>
+        <div class="card-block" *ngIf="user">
+            <fieldset>                        
+                <legend>Over view</legend>
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Full Name:</label>
+                        <span class="col-sm-8 dotted">{{user.firstName + ' ' + user.lastName}}&nbsp;</span>
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Username:</label>
+                        <span class="col-sm-8 dotted">{{user.userName}}&nbsp;</span>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Status:</label>
+                        <span class="col-sm-8 dotted">{{user.status}}&nbsp;</span>
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">User Type:</label>
+                        <span *ngIf="user.isAdmin" class="col-sm-8 dotted">System Admin&nbsp;</span>
+                    </div>
+                </div>
+            </fieldset>
+            <hr/>
+
+            <fieldset>                        
+                <legend>Employee Information</legend>
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Employee status:</label>
+                        <span class="col-sm-8 dotted">{{user.employeeStatus}}&nbsp;</span>
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-5 text-left text-bold">Display Employee Records:</label>
+                        <label class="k-form-field" *ngIf="user.showOnEmployees">
+                            <input type="checkbox" id="auth-2fa" class="k-checkbox" checked="checked">
+                            <label class="k-checkbox-label" for="auth-2fa"></label>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Title:</label>
+                        <span class="col-sm-8 dotted">{{user.title}}&nbsp;</span>
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Work Phone:</label>
+                        <span class="col-sm-8 dotted">{{user.phoneWork}}&nbsp;</span>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Mobile:</label>
+                        <span class="col-sm-8 dotted">{{user.phoneMobile}}&nbsp;</span>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Address Street:</label>
+                        <span class="col-sm-8 dotted">{{user.addressStreet}}&nbsp;</span>
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Fax:</label>
+                        <span class="col-sm-8 dotted">{{user.phoneFax}}&nbsp;</span>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Address State:</label>
+                        <span class="col-sm-8 dotted">{{user.addressState}}&nbsp;</span>
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Home phone:</label>
+                        <span class="col-sm-8 dotted">{{user.phoneHome}}&nbsp;</span>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Address Country:</label>
+                        <span class="col-sm-8 dotted">{{user.addressCountry}}&nbsp;</span>
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Address City:</label>
+                        <span class="col-sm-8 dotted">{{user.addressCity}}&nbsp;</span>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Description:</label>
+                        <span class="col-sm-8 dotted">{{user.description}}&nbsp;</span>
+                    </div>
+                    <div class="col-sm-6 form-inline margin-top-10">
+                        <label class="col-sm-4 text-left text-bold">Address Postal Code:</label>
+                        <span class="col-sm-8 dotted">{{user.addressPostalcode}}&nbsp;</span>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <hr/>
+
+            <div class="row">
+                <div class="col-sm-7 text-left">
+                    <div class="form-inline">
+                        <button class="k-button k-primary" type="button" (click)="onEdit(use.id)"><i class="fa fa-pencil"></i>&nbsp; Edit</button> &nbsp;
+                        <button class="btn btn-danger" type="button" class="k-button" (click)="onBack()"><i class="fa fa-trash"></i>&nbsp; Cancel</button>
+                    </div>
+                </div>
+                <div class="col-sm-5 text-right">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

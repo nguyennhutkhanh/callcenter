@@ -1,0 +1,60 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-4 text-left">
+                <div class="form-inline">
+                    <kendo-dropdownlist  
+                      [(ngModel)]="selectedStatus"
+                      [data]="listStatus"
+                      [textField]="'text'"
+                      [valueField]="'value'" class="row col-sm-11"
+                      (selectionChange)="onSelectCaseStatus($event)">
+                    </kendo-dropdownlist>
+                </div>
+            </div>
+            <div class="col-sm-5 text-right">
+            </div>
+        </div>
+        
+        <table class="table table-bordered table-striped table-condensed" style="margin-top: 10px;">
+            <thead>
+            <tr>
+                <th>Num</th>
+                <th>Subject</th>
+                <th>Account Name</th>
+                <th>Priority</th>
+                <th style="width:130px;">Date Created</th>
+                <th style="width: 50px;">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of casesPage">
+                    <td>{{item.caseNumber}}</td>
+                    <td>{{item.subject}}</td>
+                    <td>{{onGetAccountNameByID(item.accountId)}}</td>
+                    <td>{{item.priority}}</td>
+                    <td>{{ConvertIntToDateTime(item.dateEntered)}}</td>
+                    <td><a [routerLink]="[]" (click)="onViewCase(item.id)">View</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    <div class="row margin-bottom-10">
+            <div class="col-sm-4 text-left">
+                <label style="margin-top:10px" style="justify-content: left;">Showing {{(currentIndex-1 )* pageSize + 1 }} to {{(currentIndex-1 ) * pageSize + record}} of {{totalrecord}} entries</label>
+            </div>
+            <div class="col-sm-8 text-right">
+                <ul class="pagination" style="float:right" >
+                    <li [ngClass]="{'disabled': (currentIndex == 1 || pageNumber == 0)}" ><a  (click)="prevPage()">Prev</a></li>
+                        <li *ngFor="let page of pagesIndex"  [ngClass]="{'active': (currentIndex == page)}">
+                            <a (click)="setPage(page)">{{page}}</a>
+                        </li>
+                    <li [ngClass]="{'disabled': (currentIndex == pageNumber || pageNumber == 0)}" ><a   (click)="nextPage()">Next</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>

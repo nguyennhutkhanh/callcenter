@@ -1,0 +1,262 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-block">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-horizontal" >
+                <div class="row">
+                    <div class="col-sm-7 text-left">
+                        <div class="form-inline">
+                            <button style="submit" [disabled]="!form.valid" class="k-button k-primary" type="button" (click)="hashPassword()"><i class="fa fa-save"></i>&nbsp; Save</button> &nbsp;
+                            <button class="btn btn-danger" type="button" class="k-button" (click)="onBack()"><i class="fa fa-trash"></i>&nbsp; Cancel</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 text-right">                        
+                    </div>
+                </div>
+                <hr/>
+                <div class="col-md-12 mb-4">
+                    <!-- Nav tabs -->
+                    <tabset>
+                        <tab heading="User Profile">
+                            <fieldset>                        
+                                <legend>Over view</legend>
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Username:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" autofocus formControlName="username"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">First Name:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="firstName"/>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Status:</label>
+                                        <div class="row col-sm-8">
+                                                <kendo-dropdownlist  
+                                                [(ngModel)]="defaultItemStatus"
+                                                [data]="listItemsStatus"
+                                                [textField]="'text'"
+                                                [valueField]="'value'" class="row col-sm-11" formControlName="status">
+                                            </kendo-dropdownlist>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">LastName:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="lastName"/>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">User Type:</label>
+                                        <div class="row col-sm-8">
+                                            <kendo-dropdownlist  
+                                                [(ngModel)]="defaultItemUserType"
+                                                [data]="listItemsUserType"
+                                                [textField]="'text'"
+                                                [valueField]="'value'" class="row col-sm-11" formControlName="isAdmin">
+                                            </kendo-dropdownlist>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <hr/>
+            
+                            <fieldset>                        
+                                <legend>Employee Information</legend>
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Employee Status:</label>
+                                        <div class="row col-sm-8">
+                                                <kendo-dropdownlist  
+                                                    [(ngModel)]="selectedItemEmployeeStatus"
+                                                    [data]="listItemsEmployeeStatus"
+                                                    [textField]="'text'"
+                                                    [valueField]="'value'" class="row col-sm-11" formControlName="employeeStatus">
+                                                </kendo-dropdownlist>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Work Phone:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="phoneWork" />
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Title:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="title"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Mobile:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="phoneMobile"/>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Fax:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="phoneFax"/>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Address Street:</label>
+                                        <div class="row col-sm-8">
+                                            <input type="text" kendoTextBox class="col-sm-10" formControlName="addressStreet"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Home phone:</label>
+                                        <div class="row col-sm-8">
+                                            <input type="text" kendoTextBox class="col-sm-10" formControlName="phoneOther"/>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Address State:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="addressState" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Address City:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="addressCity" />
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Address Country:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="addressCountry" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Address Postal Code:</label>
+                                        <div class="row col-sm-8">
+                                            <kendo-numerictextbox class="row col-sm-11"
+                                                [value]="value" [min]="0" [max]="100" [autoCorrect]="autoCorrect" formControlName="postalCode">
+                                            </kendo-numerictextbox>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="form-inline">
+                                    <div class="col-sm-12 form-inline margin-top-10">
+                                        <label class="col-sm-2 text-left">Description:</label>
+                                        <textarea mdInput class="form-control col-sm-9" formControlName="description"></textarea>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <hr/>
+            
+                            <fieldset>                        
+                                <legend>Email Settings</legend>
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Email Address:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="text" kendoTextBox class="col-sm-10" formControlName="emailAddress"/>
+                                        </div>                            
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <hr/>
+
+                            <fieldset>                        
+                                <legend>Role</legend>
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Role:</label>
+                                        <div class="row col-sm-8">
+                                            <kendo-dropdownlist  
+                                                [(ngModel)]="defaultItemaclRolesId"
+                                                [data]="listItemsaclRolesId"
+                                                [textField]="'text'"
+                                                [valueField]="'value'" class="row col-sm-11" formControlName="aclRolesId">
+                                              </kendo-dropdownlist>
+                                        </div>                     
+                                    </div>
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-sm-7 text-left">
+                                    <div class="form-inline">
+                                        <button style="submit" [disabled]="!form.valid" class="k-button k-primary" type="button" (click)="onSave()"><i class="fa fa-save"></i>&nbsp; Save</button> &nbsp;
+                                        <button class="btn btn-danger" type="button" class="k-button" (click)="onBack()"><i class="fa fa-trash"></i>&nbsp; Cancel</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 text-right">
+                                    
+                                </div>
+                            </div>
+                        </tab>
+                        <tab heading="Password">
+                            <fieldset>                        
+                                <legend>Password</legend>
+                                <div class="form-inline">
+                                    <div class="col-sm-6 form-inline margin-top-10">
+                                        <label class="col-sm-4 text-left">Password:</label>
+                                        <div class="row col-sm-8">
+                                            <input mdInput type="password" kendoTextBox class="row col-sm-10" formControlName="password"/>
+                                        </div>                            
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </tab>
+                        
+                    </tabset>
+                </div><!--/.col-->
+                
+            </form>
+
+            <!-- Dialog Error-->
+            <kendo-dialog *ngIf="errorDialog" (close)="onCloseErrorDialog()" [minWidth]="250" [width]="450">
+                <kendo-dialog-titlebar style="background-color: red;">
+                    <div style="font-size: 18px; line-height: 1.3em;">
+                    <span class="k-icon k-i-warning"></span> Error
+                    </div>
+                </kendo-dialog-titlebar>
+                <p style="margin: 30px; text-align: center;">{{errorCode}}</p>
+                <p style="margin: 30px; text-align: center;">{{contentError}}</p>
+                <kendo-dialog-actions>
+                    <button kendoButton (click)="onCloseErrorDialog()">Cancel</button>
+                </kendo-dialog-actions>
+            </kendo-dialog>
+        </div>
+    </div>
+</div>

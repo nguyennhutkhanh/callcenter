@@ -1,0 +1,52 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-block">
+            <p style="font-weight:bold; font-size:20px; color:green">{{role.name}}</p>
+              <div class="row margin-bottom-10">
+                  <div class="col-sm-7 text-left">
+                      <div class="form-inline">
+                          <button style="submit" class="k-button k-primary" type="button" (click)="onSave()"><i class="fa fa-save"></i>&nbsp; Save</button> &nbsp;
+                          <button class="btn btn-danger" type="button" class="k-button" (click)="onBack()"><i class="fa fa-trash"></i>&nbsp; Cancel</button>
+                      </div>
+                  </div>
+                  <div class="col-sm-5 text-right">
+                      
+                  </div>
+              </div>
+              
+            <table class="table table-bordered table-striped table-condensed" style="margin-top: 10px;">
+              <thead>
+              <tr>
+                  <th style="width:100px;">&nbsp;</th>
+                  <th *ngFor="let item of colNameModel">{{item}}</th>
+              </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of colName">
+                      <td>{{item.name}}</td>
+                      <td *ngFor="let item1 of item.value"><span *ngIf="item1.id !== ids" (click)="onShow($event, item1, item);">{{item1.text}}</span>
+                        <div *ngIf="item1.id == ids">
+                            <kendo-dropdownlist  
+                                [defaultItem]="aclRoleSelected"
+                                [data]="aclRole"
+                                [textField]="'text'"
+                                [valueField]="'value'"
+                                class="row" 
+                                (selectionChange)="selectionChange($event)"
+                                >
+                            </kendo-dropdownlist>
+                        </div>
+
+                      </td>
+                  </tr>
+
+              </tbody>
+          </table>
+          </div>
+        </div>
+      <!--/.col-->
+    </div>
+   </div>
+  </div>
