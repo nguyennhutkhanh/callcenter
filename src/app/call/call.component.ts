@@ -1,6 +1,6 @@
 import { User} from './../shared/models/user';
 import { UserService } from 'app/shared/services/user.service';
-import { CallJSon } from './../shared/models/call';
+import { Call } from './../shared/models/call';
 import { CallService } from 'app/shared/services/call.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,10 +13,10 @@ import { Router } from '@angular/router';
 })
 export class CallComponent implements OnInit {
 
-  calls: CallJSon[] = [];
+  calls: Call[] = [];
   users: User[] = [];
   //Pagination
-  callList: CallJSon [];
+  callList: Call[];
   pages : number = 4;
   pageSize : number = 10;
   pageNumber : number = 0;

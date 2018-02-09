@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { PgService } from 'app/shared/services/pg.service';
 import { Injectable } from '@angular/core';
 import { Headers} from '@angular/http';
-import { CallJSon } from './../models/call';
+import { Call } from './../models/call';
 
 @Injectable()
 export class CallService {
@@ -29,7 +29,7 @@ export class CallService {
     return await this.pg.get('calls/' + id, headers);
   }
 
-  async addCall(call: CallJSon): Promise<any>{
+  async addCall(call: Call): Promise<any>{
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('token', this.pg.getToken());
@@ -37,7 +37,7 @@ export class CallService {
     return await this.pg.post('calls', call, headers);
   }
 
-  async updateCall(call: CallJSon): Promise<any>{
+  async updateCall(call: Call): Promise<any>{
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('token', this.pg.getToken());

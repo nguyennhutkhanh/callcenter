@@ -44,7 +44,7 @@
                   <td>{{item.subject}}</td>
                   <td>{{item.relatedTo}}</td>
                   <td>{{ConvertIntToDateTime(item.dateStart)}}</td>
-                  <td>{{getUser(item.userId)}}</td>
+                  <td>{{item.userFullName}}</td>
                   <td>{{ConvertIntToDateTime(item.dateEntered)}}</td>
                   <td><a [routerLink]="[]" (click)="onEditCall(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteCall(item.id)">Delete</a> | <a [routerLink]="[]" (click)="onCreateCase(item.id)">Case</a></td>
               </tr>

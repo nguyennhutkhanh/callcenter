@@ -2,7 +2,7 @@ import { DepartmentService } from './../../shared/services/department.service';
 import { Department } from './../../shared/models/department';
 import { ContactService } from './../../shared/services/contact.service';
 import { UserService } from 'app/shared/services/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from './../../shared/services/account.service';
 import { CommonService } from './../../shared/services/common.service';
@@ -56,11 +56,17 @@ export class CreateAccountComponent implements OnInit {
   errorDialog: boolean = false;
   contentError: string = "";
 
-  constructor(private fb: FormBuilder, private router: Router, private commonService: CommonService, private accountService: AccountService) { 
+  phone: string;
+  constructor(private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute, private commonService: CommonService, private accountService: AccountService) { 
     this.account = new AccountJSon();
   }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      this.phone =  params['phone'] || '';
+
+   });
+
     this.onGetAccounts();
     this.createForm();
   }
@@ -82,7 +88,7 @@ export class CreateAccountComponent implements OnInit {
     this.name = new FormControl('', Validators.required);
     this.accountType = new FormControl(this.listItemsAccountType[0], Validators.required);
     this.website = new FormControl('');
-    this.phoneOffice = new FormControl('');
+    this.phoneOffice = new FormControl(this.phone);
     this.billingAddressCountry = new FormControl('');
     this.billingAddressCity = new FormControl('');
     this.billingAddressState = new FormControl('');

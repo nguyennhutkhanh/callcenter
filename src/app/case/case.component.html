@@ -29,19 +29,19 @@
               <th>Status</th>
               <th>Assign To</th>
               <th style="width:130px;">Date Created</th>
-              <th style="width:120px;">&nbsp;</th>
+              <th style="width:70px;">&nbsp;</th>
           </tr>
           </thead>
           <tbody>
               <tr *ngFor="let item of caseList">
-                  <td>{{item.caseNumber}}</td>
+                  <td><a [routerLink]="[]" (click)="onDetailCase(item.id)">{{item.caseNumber}}</a></td>
                   <td>{{item.subject}}</td>
                   <td>{{onGetAccountNameByID(item.accountId)}}</td>
                   <td>{{item.priority}}</td>
                   <td><span class="c_{{item.statusId}}">{{item.statusName}}</span></td>
-                  <td>{{onGetUserByUserID(item.assignToId)}}</td>
+                  <td>{{item.assignToName}}</td>
                   <td>{{ConvertIntToDateTime(item.dateEntered)}}</td>
-                  <td><a [routerLink]="[]" (click)="onShowDialogDeleteCase(item.id)">Delete</a> | <a [routerLink]="[]" (click)="onDetailCase(item.id)">Detail</a></td>
+                  <td><a [routerLink]="[]" (click)="onShowDialogDeleteCase(item.id)">Delete</a></td>
               </tr>
           </tbody>
       </table>

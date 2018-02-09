@@ -1,57 +1,5 @@
 export class Call{
     id: string;
-    subject: string;
-    dateEntered: number;
-    dateModified: number;
-    modified_user_id: string;
-    createdBy: string;
-    description: string;
-    deleted: boolean;
-    assignedUserId: string;
-    durationHours: number;
-    durationMinutes: number;
-    dateStart:number;
-    dateEnd: number;
-    parentType: string;
-    status: string;
-    direction: string;
-    parentId: string;
-    reminderTime: number;
-    email_reminder_time: number;
-    email_reminder_sent: number;
-    outlook_id: string;
-    repeat_type: string;
-    repeat_interval: number;
-    repeat_dow: string;
-    repeat_until: Date;
-    repeat_count: number;
-    repeat_parent_id: string;
-    account_type: string;
-    industry: string;
-    annual_revenue: string;
-    phone_tax: string;
-    billing_address_street: string;
-    billing_address_city: string;
-    billing_address_state: string;
-    billing_address_postalcode: string;
-    billing_address_country: string;
-    rating: string;
-    phone_office: string;
-    phone_alternate: string;
-    website: string;
-    ownership: string;
-    employees: string;
-    ticker_sysbol: string;
-    shipping_address_street: string;
-    shipping_address_city: string;
-    shipping_address_state: string;
-    shipping_address_postalcode: string;
-    shipping_address_country: string;
-    recurring_source: string;
-}
-
-export class CallJSon{
-    id: string;
     relatedToId: string;
     relatedTo: string;
     userFullName: string;

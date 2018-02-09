@@ -1,4 +1,4 @@
-import { CallJSon } from './../../shared/models/call';
+import { Call } from './../../shared/models/call';
 import { CallService } from './../../shared/services/call.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { DepartmentService } from 'app/shared/services/department.service';
 })
 export class CallDetailComponent implements OnInit {
   id: string;
-  call: CallJSon = new CallJSon();
+  call: Call = new Call();
   constructor(public router: Router, private activatedRoute: ActivatedRoute, private callService: CallService) { }
 
   ngOnInit() {

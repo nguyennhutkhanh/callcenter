@@ -1,4 +1,6 @@
-import { CallJSon } from './../shared/models/call';
+import { CaseLogService } from './../shared/services/case-log.service';
+import { CaseLog } from 'app/shared/models/case-log';
+import { Call } from './../shared/models/call';
 import { DepartmentService } from './../shared/services/department.service';
 import { Account } from './../shared/models/account';
 import { CommonService } from './../shared/services/common.service';
@@ -19,7 +21,7 @@ import { CaseStatus } from 'app/shared/models/case-status';
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.scss'],
-  providers: [CommonService, ContactService, CaseService, UserService, CallService, AccountService,DepartmentService]
+  providers: [CommonService, ContactService, CaseService, UserService, CallService, AccountService,DepartmentService, CaseLogService]
 })
 export class CustomerComponent implements OnInit {
   contact: Contact = new Contact();
@@ -27,8 +29,19 @@ export class CustomerComponent implements OnInit {
 
   cases: Case[] = [];
   users: User[]=[];
-  calls: CallJSon[] = [];
-  constructor(private activatedRoute:ActivatedRoute, public router: Router, private commonService: CommonService, private contactService: ContactService, private caseService: CaseService, private callService: CallService, private userService: UserService) { 
+  calls: Call[] = [];
+
+
+  case: Case;
+  caseLog: CaseLog[] = [];
+  public listStatus: Array<{text: string, id: string, value: number }> = [
+    { text: "Waiting", id: "40C3A4A9-F60C-4FFD-8CF8-100C6BED0647", value: 1 },
+    { text: "Proccessing", id: "00E57127-9CC3-41F4-BEB3-064C02E14989", value: 2 },
+    { text: "Confirm Wating", id: "4FD839BD-188E-4329-B405-05002B95462D", value: 3 },
+    { text: "Rejected", id: "0FF820F8-7CB7-4B38-A536-55ED04EEFB5B", value: 4 },
+    { text: "Closed", id: "47AB1A0B-7D46-491C-9D75-63BD31F8C907", value: 5 }
+  ];
+  constructor(private activatedRoute:ActivatedRoute, public router: Router, private commonService: CommonService, private contactService: ContactService, private caseService: CaseService, private callService: CallService, private userService: UserService, private caseLogService: CaseLogService) { 
     this.onGetUsers();
   }
 
@@ -60,7 +73,7 @@ export class CustomerComponent implements OnInit {
       this.contact = result;
     })
     .catch(error => {
-      console.log(error);
+      this.router.navigate(["account/create-account", this.phone]);
     });
   }
 
@@ -135,7 +148,39 @@ export class CustomerComponent implements OnInit {
     return '';
   }
 
-  ViewCase(id: string){
-    this.router.navigate(["case/detail-case", id]);
+  detailDialog: boolean = false;
+  showDetailCase(id: string){
+    this.detailDialog = true;
+
+    this.onGetCase(id);
+    this.onGetCaseLogByCase(id);
+  }
+
+  onCloseDialog(){
+    this.detailDialog = false;
+  }
+
+
+  private async onGetCase(id: string){
+    this.caseService.getCase(id)
+    .then(result => {
+      this.case = result;
+      //this.statusId = this.status(result.statusId);
+    })
+    .catch(error => {
+    });
+  }
+
+  private async onGetCaseLogByCase(id: string){
+    this.caseLogService.getCaseLogsByCase(id)
+    .then(result => {
+      this.caseLog = result;
+    })
+    .catch(error => {
+    });
+  }
+
+  public statusName(statusid : string){
+    return this.listStatus.find(r => r.id == statusid).text;
   }
 }

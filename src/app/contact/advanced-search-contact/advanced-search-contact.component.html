@@ -46,18 +46,18 @@
               <th>Office Phone</th>
               <th>User</th>
               <th style="width:130px;">Date Created</th>
-              <th style="width:150px;">&nbsp;</th>
+              <th style="width:110px;">&nbsp;</th>
           </tr>
           </thead>
           <tbody>
               <tr *ngFor="let item of contactList">
-                    <td>{{item.salutation}} {{item.firstName}} {{item.lastName}}</td>
+                    <td><a [routerLink]="[]" (click)="showDetailCase(item.id)">{{item.salutation}} {{item.firstName}} {{item.lastName}}</a></td>
                     <td>{{item.title}}</td>
-                    <td>{{item.userName}}</td>
+                    <td>{{item.accountName}}</td>
                     <td>{{item.phoneWork}}</td>
-                    <td>{{onGetUserByUserID(item.createdBy)}}</td>
+                    <td>{{item.assignedUserName}}</td>
                     <td>{{ConvertIntToDateTime(item.dateEntered)}}</td>
-                  <td><a [routerLink]="[]" (click)="onEditContact(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteContact(item.id)">Delete</a> | <a [routerLink]="[]" (click)="onDetailContact(item.id)">Detail</a></td>
+                  <td><a [routerLink]="[]" (click)="onEditContact(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteContact(item.id)">Delete</a></td>
               </tr>
           </tbody>
       </table>

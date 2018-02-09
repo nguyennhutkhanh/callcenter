@@ -26,20 +26,20 @@
                 <th>City</th>
                 <th>State</th>
                 <th>Country</th>
-                <th>User</th>
+                <th>Create By</th>
                 <th style="width:130px;">Date Created</th>
-                <th style="width:150px;">&nbsp;</th>
+                <th style="width:120px;">&nbsp;</th>
             </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of accountList">
-                    <td>{{item.name}}</td>
+                    <td><a [routerLink]="[]" (click)="onDetailAccount(item.id)">{{item.name}}</a></td>
                     <td>{{isNull(item.billingAddressCity)}}</td>
                     <td>{{item.billingAddressState}}</td>
                     <td>{{item.billingAddressCountry}}</td>
-                    <td>{{onGetUserByUserID(item.createdBy)}}</td>
+                    <td>{{item.createdByName}}</td>
                     <td>{{ConvertIntToDateTime(item.dateEntered)}}</td>
-                    <td><a [routerLink]="[]" (click)="onEditAccount(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteAccount(item.id)">Delete</a> | <a [routerLink]="[]" (click)="onDetailAccount(item.id)">Detail</a></td>
+                    <td><a [routerLink]="[]" (click)="onEditAccount(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteAccount(item.id)">Delete</a></td>
                 </tr>
             </tbody>
         </table>

@@ -9,7 +9,7 @@ import { CommonService } from 'app/shared/services/common.service';
 import { CallService } from './../../shared/services/call.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { CallJSon } from 'app/shared/models/call';
+import { Call } from 'app/shared/models/call';
 import { ContactService } from 'app/shared/services/contact.service';
 import { User } from 'app/shared/models/user';
 import { DepartmentService } from 'app/shared/services/department.service';
@@ -37,7 +37,7 @@ export class CreateCallComponent implements OnInit {
   description: FormControl;
   popup: FormControl;
   userId: FormControl;
-  call: CallJSon;
+  call: Call;
 
   public listDirection: Array<{ text: string, value: number }> = [
       { text: "Inbound", value: 1 },
@@ -110,7 +110,7 @@ export class CreateCallComponent implements OnInit {
    userList: User[] = [];
    popUpCheck: boolean =  false;
   constructor(private fb: FormBuilder, private router: Router, private commonService: CommonService, private callService: CallService, private accountService: AccountService, private userService: UserService, private contactService: ContactService) { 
-    this.call = new CallJSon();
+    this.call = new Call();
     this.onGetUsers();
   }
 

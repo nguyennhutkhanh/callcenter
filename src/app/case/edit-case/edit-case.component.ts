@@ -214,6 +214,9 @@ export class EditCaseComponent implements OnInit {
     this.userid = item.id;
     this.userDialog = false;
 
+    this.deptid = item.departmentId;
+    this.deptNameModel = item.departmentId;
+    
     this.userNameModel = item.firstName + ' ' + item.lastName;;
   }
 

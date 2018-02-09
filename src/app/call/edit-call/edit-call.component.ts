@@ -1,5 +1,5 @@
 import { User } from './../../shared/models/user';
-import { Call, CallJSon } from './../../shared/models/call';
+import { Call } from './../../shared/models/call';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { PgService } from './../../shared/services/pg.service';
 import { CommonService } from 'app/shared/services/common.service';
@@ -34,7 +34,7 @@ export class EditCallComponent implements OnInit {
   description: FormControl;
   userId: FormControl;
   popup: FormControl;
-  call: CallJSon;
+  call: Call;
   public listDirection: Array<{ text: string, value: number }> = [
     { text: "Inbound", value: 1 },
     { text: "Outbound", value: 2 },
@@ -107,7 +107,7 @@ export class EditCallComponent implements OnInit {
   popUpCheck: boolean =  false;
 
   constructor(private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute, private commonService: CommonService, private callService: CallService, private accountService: AccountService, private userService: UserService, private contactService: ContactService) { 
-    this.call = new CallJSon();
+    this.call = new Call();
     this.onGetAccounts();
     this.onGetContacts();
     
@@ -183,7 +183,7 @@ export class EditCallComponent implements OnInit {
   }
 
   onSave(){
-    var callUpdate = new CallJSon();
+    var callUpdate = new Call();
     callUpdate.id = this.call.id;
     callUpdate.subject = this.isNull(this.subject.value);
     callUpdate.direction = this.isNull(this.selectedDirection.text);

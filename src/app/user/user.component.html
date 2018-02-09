@@ -29,23 +29,23 @@
                   <th>Phone</th>
                   <th>Status</th>
                   <th style="width:180px;">System Administrator</th>
-                  <th style="width:150px;">&nbsp;</th>
+                  <th style="width:110px;">&nbsp;</th>
               </tr>
               </thead>
               <tbody>
                   <tr *ngFor="let item of userList" (dblclick)="onEditUser(item.id)" >
-                      <td>{{item.firstName + ' ' + item.lastName}}</td>
+                      <td><a [routerLink]="[]" (click)="onDetailUser(item.id)">{{item.firstName + ' ' + item.lastName}}</a></td>
                       <td>{{item.userName}}</td>
                       <td>{{item.title}}</td>
-                      <td>{{item.department}}</td>
+                      <td>{{item.departmentName}}</td>
                       <td>{{item.phoneMobile}}</td>
                       <td>{{item.status}}</td>
-                      <td><label class="k-form-field" *ngIf="item.isAdmin">
+                      <td center><label class="k-form-field" *ngIf="item.isAdmin">
                         <input type="checkbox" class="k-checkbox"  checked="">
                         <label class="k-checkbox-label" for="auth-2fa"></label>
                         </label>
                         </td>
-                      <td><a [routerLink]="[]" (click)="onEditUser(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteUser(item.id)">Delete</a> | <a [routerLink]="[]" (click)="onDetailUser(item.id)">Detail</a></td>
+                      <td><a [routerLink]="[]" (click)="onEditUser(item.id)">Edit</a> | <a [routerLink]="[]" (click)="onShowDialogDeleteUser(item.id)">Delete</a></td>
                   </tr>
               </tbody>
           </table>

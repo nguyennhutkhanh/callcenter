@@ -38,6 +38,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'create-account/:phone',
+        component: CreateAccountComponent,
+        data: {
+          title: 'Create'
+        }
+      },
+      {
         path: 'edit-account/:id',
         component: EditAccountComponent,
         data: {
